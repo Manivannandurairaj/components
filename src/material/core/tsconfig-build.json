@@ -8,7 +8,7 @@
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
     "flatModuleOutFile": "index.js",
-    "flatModuleId": "@angular/material/core",
+    "flatModuleId": "@mani/material/core",
     "skipTemplateCodegen": true,
     "fullTemplateTypeCheck": true
   }

@@ -29,47 +29,47 @@ import {
   mixinColor,
   mixinDisabled,
   mixinDisableRipple,
-} from '@angular/material/core';
+} from '@mani/material/core';
 import {ANIMATION_MODULE_TYPE} from '@angular/platform-browser/animations';
 
-/** Default color palette for round buttons (mat-fab and mat-mini-fab) */
+/** Default color palette for round buttons (mani-fab and mani-mini-fab) */
 const DEFAULT_ROUND_BUTTON_COLOR = 'accent';
 
 /**
- * List of classes to add to MatButton instances based on host attributes to
+ * List of classes to add to ManiButton instances based on host attributes to
  * style as different variants.
  */
 const BUTTON_HOST_ATTRIBUTES = [
-  'mat-button',
-  'mat-flat-button',
-  'mat-icon-button',
-  'mat-raised-button',
-  'mat-stroked-button',
-  'mat-mini-fab',
-  'mat-fab',
+  'mani-button',
+  'mani-flat-button',
+  'mani-icon-button',
+  'mani-raised-button',
+  'mani-stroked-button',
+  'mani-mini-fab',
+  'mani-fab',
 ];
 
-// Boilerplate for applying mixins to MatButton.
+// Boilerplate for applying mixins to ManiButton.
 /** @docs-private */
-class MatButtonBase {
+class ManiButtonBase {
   constructor(public _elementRef: ElementRef) {}
 }
 
-const _MatButtonMixinBase: CanDisableRippleCtor & CanDisableCtor & CanColorCtor &
-    typeof MatButtonBase = mixinColor(mixinDisabled(mixinDisableRipple(MatButtonBase)));
+const _ManiButtonMixinBase: CanDisableRippleCtor & CanDisableCtor & CanColorCtor &
+    typeof ManiButtonBase = mixinColor(mixinDisabled(mixinDisableRipple(ManiButtonBase)));
 
 /**
  * Material design button.
  */
 @Component({
   moduleId: module.id,
-  selector: `button[mat-button], button[mat-raised-button], button[mat-icon-button],
-             button[mat-fab], button[mat-mini-fab], button[mat-stroked-button],
-             button[mat-flat-button]`,
-  exportAs: 'matButton',
+  selector: `button[mani-button], button[mani-raised-button], button[mani-icon-button],
+             button[mani-fab], button[mani-mini-fab], button[mani-stroked-button],
+             button[mani-flat-button]`,
+  exportAs: 'ManiButton',
   host: {
     '[attr.disabled]': 'disabled || null',
-    '[class._mat-animation-noopable]': '_animationMode === "NoopAnimations"',
+    '[class._mani-animation-noopable]': '_animationMode === "NoopAnimations"',
   },
   templateUrl: 'button.html',
   styleUrls: ['button.css'],
@@ -77,14 +77,14 @@ const _MatButtonMixinBase: CanDisableRippleCtor & CanDisableCtor & CanColorCtor 
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MatButton extends _MatButtonMixinBase
+export class ManiButton extends _ManiButtonMixinBase
     implements OnDestroy, CanDisable, CanColor, CanDisableRipple {
 
   /** Whether the button is round. */
-  readonly isRoundButton: boolean = this._hasHostAttributes('mat-fab', 'mat-mini-fab');
+  readonly isRoundButton: boolean = this._hasHostAttributes('mani-fab', 'mani-mini-fab');
 
   /** Whether the button is icon button. */
-  readonly isIconButton: boolean = this._hasHostAttributes('mat-icon-button');
+  readonly isIconButton: boolean = this._hasHostAttributes('mani-icon-button');
 
   /** Reference to the MatRipple instance of the button. */
   @ViewChild(MatRipple, {static: false}) ripple: MatRipple;
@@ -137,18 +137,18 @@ export class MatButton extends _MatButtonMixinBase
  */
 @Component({
   moduleId: module.id,
-  selector: `a[mat-button], a[mat-raised-button], a[mat-icon-button], a[mat-fab],
-             a[mat-mini-fab], a[mat-stroked-button], a[mat-flat-button]`,
-  exportAs: 'matButton, matAnchor',
+  selector: `a[mani-button], a[mani-raised-button], a[mani-icon-button], a[mani-fab],
+             a[mani-mini-fab], a[mani-stroked-button], a[mani-flat-button]`,
+  exportAs: 'ManiButton, matAnchor',
   host: {
     // Note that we ignore the user-specified tabindex when it's disabled for
-    // consistency with the `mat-button` applied on native buttons where even
+    // consistency with the `mani-button` applied on native buttons where even
     // though they have an index, they're not tabbable.
     '[attr.tabindex]': 'disabled ? -1 : (tabIndex || 0)',
     '[attr.disabled]': 'disabled || null',
     '[attr.aria-disabled]': 'disabled.toString()',
     '(click)': '_haltDisabledEvents($event)',
-    '[class._mat-animation-noopable]': '_animationMode === "NoopAnimations"',
+    '[class._mani-animation-noopable]': '_animationMode === "NoopAnimations"',
   },
   inputs: ['disabled', 'disableRipple', 'color'],
   templateUrl: 'button.html',
@@ -156,7 +156,7 @@ export class MatButton extends _MatButtonMixinBase
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MatAnchor extends MatButton {
+export class MatAnchor extends ManiButton {
   /** Tabindex of the button. */
   @Input() tabIndex: number;
 

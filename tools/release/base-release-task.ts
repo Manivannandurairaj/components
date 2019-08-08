@@ -27,7 +27,7 @@ export class BaseReleaseTask {
     // In case there are multiple allowed publish branches for this version, we just
     // exit and let the user decide which branch they want to release from.
     if (allowedBranches.length !== 1) {
-      console.warn(yellow('  ✘   You are not on an allowed publish branch.'));
+      console.warn(yellow('  ✘   You are not on an allowed publish branch all.'));
       console.warn(yellow(`      Please switch to one of the following branches: ` +
         `${allowedBranches.join(', ')}`));
       process.exit(0);

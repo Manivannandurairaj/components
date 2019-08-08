@@ -1,5 +1,5 @@
 {
-  "name": "@angular/material",
+  "name": "@mani/material",
   "version": "0.0.0-PLACEHOLDER",
   "description": "Angular Material",
   "main": "./bundles/material.umd.js",
@@ -35,7 +35,7 @@
   "ng-update": {
     "migrations": "./schematics/migration.json",
     "packageGroup": [
-      "@angular/material",
+      "@mani/material",
       "@angular/cdk",
       "@angular/material-moment-adapter"
     ]
